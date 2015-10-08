@@ -1,0 +1,623 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>monster mashup 2014: finding the devil</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.scrollzer.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
+		<div id="wrapper">
+
+			<!-- Header -->
+				<section id="header" class="skel-layers-fixed">
+					<header>
+						<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
+						<h1 id="logo"><a href="#">monster mashup 2014</a></h1>
+						<p>finding the devil<br />
+						in contemporary music</p>
+					</header>
+					<nav id="nav">
+						<ul>
+							<li><a href="#one" class="active">research question</a></li>
+							<li><a href="#two">get the stuff</a></li>
+							<li><a href="#three">transform the data</a></li>
+							<li><a href="#four">finish up & celebrate</a></li>
+						</ul>
+					</nav>
+					<footer>
+						<ul class="icons">
+							<li><a href="http://www.twitter.com/michellehudson" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="https://github.com/michellehudson" class="icon fa-github"><span class="label">Github</span></a></li>
+						</ul>
+					</footer>
+				</section>
+
+			<!-- Main -->
+				<div id="main">
+
+					<!-- One -->
+						<section id="one">
+							<div class="container">
+								<header class="major">
+									<h2>monster mashup 2014</h2>
+									<p>finding the devil with open refine</p>
+								</header>
+								<p>The devil has been a popular theme of modern music since Robert Johnson sold his soul to him in the 1930s. 
+In the late 1980s and early 1990s, a moral panic concerning Satanism and alleged Satanism-related crimes swept the United States.
+In this poorly-methodologized example purely for entertainment purposes which in no way bears resemblance to actual rigorous research, I will get a data set into shape using Open Refine to see whether an increase in Satanic Panic correlates with an increase in music about the devil.
+</p>
+							</div>
+						</section>
+						
+					<!-- Two -->
+						<section id="two">
+							<div class="container">
+								<h3>get the stuff</h3>
+								<h4>the tools</h4>
+								<p>Using OpenRefine is a good way to find commonalities in a large data set by using facets and filters to act upon different parts of it. This is much faster than loading it into Excel or another software program, and you can load files directly from the web. Get <a href="http://openrefine.org/">OpenRefine</a>.</p>
+								
+								<h4>the data</h4>
+								<p>I have to find a data set that will be suitable for analysis. The <a href="http://labrosa.ee.columbia.edu/millionsong/">Million Song Dataset</a> contains a million songs from 1930 to 2011. You can read more about the methodology of gathering these songs and their metadata at the data set's <a href="http://labrosa.ee.columbia.edu/millionsong/faq">FAQ page</a>.</p>
+								
+								<h4>the data?</h4>
+								<p>One key bit of information I found when looking through the MSD documentation: they only have year metadata for about half the tracks, and they make this available in an <a href="http://labrosa.ee.columbia.edu/millionsong/sites/default/files/AdditionalFiles/tracks_per_year.txt">additional data file that’s just a text file</a>. This is bad because it’s fewer data points to work with for my analysis, but good because I don’t have to learn a new data format and processing method to be able to use the data.</p>
+								
+								<h4>what now?</h4>
+								<p>The rest of this tutorial will walk you through important steps to process this huge data set and get it ready for analysis:</p>
+								
+								<ul class="feature-icons">
+									<li class="fa-code">ingest the data set</li>
+									<li class="fa-cubes">separate the columns</li>
+									<li class="fa-bars">merge band names</li>
+									<li class="fa-copy">deduplicate records</li>
+									<li class="fa-star">filter on keywords</li>
+									<li class="fa-download">export the selected data</li>
+								</ul>
+							</div>
+						</section>
+						
+					<!-- Three -->
+						<section id="three">
+							<div class="container">
+								<h3>discern the transmundane (or: transform the data)</h3>
+								<div class="features">
+									<article>
+										<a href="images/ingest_url.png" class="image"><img src="images/ingest_url.png" alt="" /></a>
+										<div class="inner">
+											<h4>ingest the data</h4>
+											<p>We can load the dataset into Open Refine straight from the <a href="http://labrosa.ee.columbia.edu/millionsong/sites/default/files/AdditionalFiles/tracks_per_year.txt">URL we found</a>, just click on "Web Addresses (URLs), and paste it into the box!</p>
+										</div>
+										<a href="images/ingest_options.png" class="image"><img src="images/ingest_options.png" alt="" /></a>
+										<div class="inner">
+											<p>Curiously, from this screen, Refine only wants to let you have one character as a separator. This dataset uses a strange separator, so let's just leave everything in one column for now by clicking "custom" but leaving the box blank.</p>
+											
+											<p>Make sure to check the options for ingest thoroughly -- for this data set, we don't want to split columns that contain quotation marks(that will break everything!) and we have no headers.</p>
+										</div>
+									</article>
+									<article>
+										<a href="images/column1.png" class="image"><img src="images/column1.png" alt="" /></a>
+										<div class="inner">
+											<h4>separate the columns</h4>
+											<p>Now everything is ingested, but it's one big string of text in just one column. We want to isolate year, identifier, band name, and song title. This is very easy with Open Refine.</p>
+										</div>
+										<a href="images/column2.png" class="image"><img src="images/column2.png" alt="" /></a>
+										<div class="inner">
+											<p>Click the little arrow pointing down next to the column name (that's how you do operations on a single column). From there, choose Edit column --> split into several columns. HERE we have the option to put in more than one character to split the columns, so go ahead and put in SEP in brackets.</p>
+										</div>
+									</article>
+									<article>
+										<a href="images/cluster.png" class="image"><img src="images/cluster.png" alt="" /></a>
+										<div class="inner">
+											<h4>merge band names</h4>
+											<p>Open Refine has a useful clustering tool that will look for items that are similar to each other and standardize their names. In this dataset, the same band is represented in a number of ways, which could impact our results. To merge artist names, select the down arrow on the column that contains band names, and select Edit cells --> Cluster and edit.</p>
+											</div>
+										<a href="images/cluster2.png" class="image"><img src="images/cluster2.png" alt="" /></a>
+										<div class="inner">
+											<p>See how many different representations of the same thing there are? I just chose "select all" because I'm pretty confident the clustering will be accurate enough for my purposes, but you can also select only a few items if you want to be more discerning. Click "Merge Selected & Recluster" to finish the operation.</p>
+										</div>
+									</article>
+									<article>
+										<a href="images/transform.png" class="image"><img src="images/transform.png" alt="" /></a>
+										<div class="inner">
+											<h4>transform to lowercase</h4>
+											<p>Since my analysis of this data doesn't care whether the devil represented is the Capital-D-Devil or not, it's easier to transform all the song titles to lowercase so we can ignore case sensitivity when selecting the records we want later. You can do a lot of other useful transformations as well. Click the column's down arrow as usual, then select Edit cells --> Common transforms --> To lowercase.</p>
+										</div>
+									</article>
+									<article>
+								
+										<div>
+											<h4>deduplicate records</h4>
+											<p>This part is tricky. The “duplicates” facet that comes built in with Open Refine will let you filter out duplicates, but won’t let you leave one instance of a record in. I definitely want one version of a track in my data set, but not two or three. To remove subsequent instances of duplicates, do this:</p>
+											<p>
+											<ol>
+												<li>Use the trusty down arrow on the column that has duplicates, and select "sort." Sorting by text is fine for this.</li>
+												<li>Now there appears a NEW "sort" option at the top of the main window.</li>
+												<li>Use the new sort option at the top and choose "reorder rows permanently." This may take a while. Go get another coffee.</li>
+												<li>When the rows are reordered, go back to using the down arrow on the column of interest, and choose Edit cells --> Blank down. This will turn every subsequent duplicate into a blank cell.</li>
+												<li>Now we can use facets! Click the column's down arrow --> Facet --> Customized facets --> Facet by blank.</li>
+												<li>Facets basically let you organize the whole dataset into "true for this facet" and "false for this facet." Select the facet that says true, which will show us everything that has a blank cell for our selected column.</li>
+												<li>If you want to permanently get rid of all the blank cells (duplicates), choose the down arrow that says "All" --> Edit rows --> remove all matching rows. You can use this same command to get rid of any rows you don't want. We're just using it this time to get rid of rows that used to be duplicates so we only have one copy of a song in our data set.</li>
+												<li>It may seem scary to remove data, but the undo/redo function is very useful and will let you back up as many steps as you want if you make a mistake.</li>
+											</ol>
+											</p>
+										</div>
+									</article>
+									<article>
+										<a href="images/filter.png" class="image"><img src="images/filter.png" alt="" /></a>
+										<div class="inner">
+											<h4>filter on keywords</h4>
+											<p>We can now use regular expressions to find tracks that have words that match the words we're interested in. Open Refine does automatic stemming for this function, which can be good and bad. Here's my list of words:</p>
+											<p>
+											<ul>
+												<li>Satan (gets satanic, satanas, etc)</li>
+												<li>Lucifer</li>
+												<li>Beelzebub</li>
+												<li>Mephisto (gets mephistopheles)</li>
+												<li>Demon (gets demons, demonic, demonstration)</li>
+												<li>Devil (gets devils, devilish ... vaudeville)</li>
+											</ul></p>
+											</div>
+												<a href="images/filter2.png" class="image"><img src="images/filter2.png" alt="" /></a>
+										<div class="inner">
+										<p>To start finding songs of interest, click the down arrow on the column, and go to Facet --> Custom text facet. You can learn more about the <a href="https://github.com/OpenRefine/OpenRefine/wiki/Google-refine-expression-language">Google Refine Expression Language</a>, but we'll be using the simple function: value.contains("wordofinterest"), and just repeating it as many times as necessary. It saves all of your expressions in the "history" tab!</p>
+										</div>
+											<a href="images/filter3.png" class="image"><img src="images/filter3.png" alt="" /></a>
+										<div class="inner">
+										<p>Since this is a facet function, it'll divide the dataset into "true" and false. The image here is showing that 585 songs returned as "true" for their titles containing "devil." If I click to see only these records that returned true, I can then go to down arrow next to "All" --> Edit rows --> Star rows. This will tell Refine that I think these rows are important, and they will stay starred unless I unstar them.</p>
+										</div>
+										<a href="images/filter4.png" class="image"><img src="images/filter4.png" alt="" /></a>
+										<div class="inner">
+										<p>Run the regular expression for every term you want to find, and star all the rows along the way just like in the step above. When you've got everything you want, go to All --> Facet by star. The rows that return as starred are your carefully curated subset of data! Congratulations!</p>
+
+										</div>
+									</article>
+									<article>
+										<a href="images/export.png" class="image"><img src="images/export.png" alt="" /></a>
+										<div class="inner">
+											<h4>export the data</h4>
+											<p>Exporting data is simple. Make sure you only have the rows that you're interested in selected (in this case, the starred ones), and go to "Export" at the top of the page. Download it in any format you want to work with it in.</p>
+										</div>
+									</article>
+									
+									
+								</div>
+							</div>
+						</section>
+						
+					<!-- Four -->
+						<section id="four">
+							<div class="container">
+								<h3>finish up!</h3>
+								<p>Now that we have just ~900 rows instead of over 500,000, Excel easily handles the data set.</p>
+								
+								<h4>findings</h4>
+								<p>I made a <a href="demons_by_year.xlsx">spreadsheet</a> and broke down the songs per year and percentage of those songs per year that included my criteria for the devil.</p> 
+								
+									<span class="image fit"><img src="images/demonchart.png" alt="" /></span>
+								
+								<p>As you can see, the percentages over time are fairly stable (discounting 1931, which has a sample size too small to be valid), the years in which songs that have titles referencing the devil make up more than 0.50% of total songs in the dataset for that year are: 
+								<ul>
+								<li>1972 (.55%)</li>
+								<li>2010 (.55%)</li>
+								<li>1956 (.61%)</li>
+								<li>1960 (.74%)</li>
+								<li>1955 (1.19%)</li>
+								</ul>
+								</p>
+								
+								<p>One particularly salient finding is that the Swedish black metal band <a href="http://en.wikipedia.org/wiki/Dark_Funeral">Dark Funeral</a>, noted practitioners of LaVeyan Satanism, have the most songs in the dataset, at 9.</p> 
+								
+								<h4>celebrate!</h4>
+								<p>I wouldn’t lead you through all this great music without leaving you with a playlist of my favorite songs about ((satan OR lucifer) OR (demon OR demons) OR (hell OR evil)). You can play the playlist on <a href="http://open.spotify.com/user/greatsufficiency/playlist/47FRYupk4fhEDSMVdiiqLu">Spotify</a>.</p>
+							
+								<h5>I Think of Demons</h5>
+											<ol>
+												<li>I Think of Demons - Roky Erickson</li>
+												<li>Sympathy for the Devil - The Rolling Stones</li>
+												<li>Satan Rejected My Soul - Morrissey</li>
+												<li>Lord of this World - Black Sabbath</li>
+												<li>Satan Is Real - The Louvin Brothers</li>
+												<li>Pentagram - Cake</li>
+												<li>Stand for the Fire Demon - Roky Erickson</li>
+												<li>In League with Satan - Venom</li>
+												<li>The Devil Went Down to Georgia - The Charlie Daniels Band</li>
+												<li>Hell Awaits - Slayer</li>
+												<li>The Mephisto Waltz - Franz Liszt</li>
+												<li>Me and the Devil Blues - Robert Johnson</li>
+												<li>Pact with Lucifer - Coven</li>
+												<li>Evil - Mercyful Fate</li>
+												<li>Unholy - KISS</li>
+												<li>The Number of the Beast - Iron Maiden</li>
+												<li>Red Right Hand - Nick Cave & The Bad Seeds</li>
+												<li>My Demon Brother - Blood Ceremony</li>
+												<li>Shout at the Devil - Motley Crue</li>
+												<li>Long Way Back From Hell - Danzig</li>
+												<li>Am I Evil? - Diamond Head</li>
+												<li>Devil's Bride - Electric Wizard</li>
+												<li>O Father O Satan O Sun! - Behemoth</li>
+												<li>To Hell with the Devil - Stryper</li>
+												<li>See You In Hell - Grim Reaper</li>
+											</ol>
+							</div>
+						</section>
+				
+					<!-- Five -->
+			<!--
+						<section id="five">
+							<div class="container">
+								<h3>Elements</h3>
+
+								<section>
+									<h4>Text</h4>
+									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+									<hr />
+									<header>
+										<h4>Heading with a Subtitle</h4>
+										<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+									</header>
+									<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+									<header>
+										<h5>Heading with a Subtitle</h5>
+										<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+									</header>
+									<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+									<hr />
+									<h2>Heading Level 2</h2>
+									<h3>Heading Level 3</h3>
+									<h4>Heading Level 4</h4>
+									<h5>Heading Level 5</h5>
+									<h6>Heading Level 6</h6>
+									<hr />
+									<h5>Blockquote</h5>
+									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+									<h5>Preformatted</h5>
+									<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+								</section>
+
+								<section>
+									<h4>Lists</h4>
+									<div class="row collapse-at-2">
+										<div class="6u">
+											<h5>Unordered</h5>
+											<ul>
+												<li>Dolor pulvinar etiam magna etiam.</li>
+												<li>Sagittis adipiscing lorem eleifend.</li>
+												<li>Felis enim feugiat dolore viverra.</li>
+											</ul>
+											<h5>Alternate</h5>
+											<ul class="alt">
+												<li>Dolor pulvinar etiam magna etiam.</li>
+												<li>Sagittis adipiscing lorem eleifend.</li>
+												<li>Felis enim feugiat dolore viverra.</li>
+											</ul>
+										</div>
+										<div class="6u">
+											<h5>Ordered</h5>
+											<ol>
+												<li>Dolor pulvinar etiam magna etiam.</li>
+												<li>Etiam vel felis at lorem sed viverra.</li>
+												<li>Felis enim feugiat dolore viverra.</li>
+												<li>Dolor pulvinar etiam magna etiam.</li>
+												<li>Etiam vel felis at lorem sed viverra.</li>
+												<li>Felis enim feugiat dolore viverra.</li>
+											</ol>
+											<h5>Icons</h5>
+											<ul class="icons">
+												<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+												<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+												<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+												<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+												<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+												<li><a href="#" class="icon fa-tumblr"><span class="label">Tumblr</span></a></li>
+											</ul>
+										</div>
+									</div>
+									<h5>Actions</h5>
+									<ul class="actions">
+										<li><a href="#" class="button special">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+										<li><a href="#" class="button alt">Default</a></li>
+									</ul>
+									<ul class="actions small">
+										<li><a href="#" class="button special small">Small</a></li>
+										<li><a href="#" class="button small">Small</a></li>
+										<li><a href="#" class="button alt small">Small</a></li>
+									</ul>
+									<div class="row collapse-at-2">
+										<div class="3u">
+											<ul class="actions vertical">
+												<li><a href="#" class="button special">Default</a></li>
+												<li><a href="#" class="button">Default</a></li>
+												<li><a href="#" class="button alt">Default</a></li>
+											</ul>
+										</div>
+										<div class="3u">
+											<ul class="actions vertical small">
+												<li><a href="#" class="button special small">Small</a></li>
+												<li><a href="#" class="button small">Small</a></li>
+												<li><a href="#" class="button alt small">Small</a></li>
+											</ul>
+										</div>
+										<div class="3u">
+											<ul class="actions vertical">
+												<li><a href="#" class="button special fit">Default</a></li>
+												<li><a href="#" class="button fit">Default</a></li>
+												<li><a href="#" class="button alt fit">Default</a></li>
+											</ul>
+										</div>
+										<div class="3u">
+											<ul class="actions vertical small">
+												<li><a href="#" class="button special small fit">Small</a></li>
+												<li><a href="#" class="button small fit">Small</a></li>
+												<li><a href="#" class="button alt small fit">Small</a></li>
+											</ul>
+										</div>
+									</div>
+								</section>
+
+								<section>
+									<h4>Table</h4>
+									<h5>Default</h5>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+									
+									<h5>Alternate</h5>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</section>
+
+								<section>
+									<h4>Buttons</h4>
+									<ul class="actions">
+										<li><a href="#" class="button special">Special</a></li>
+										<li><a href="#" class="button">Default</a></li>
+										<li><a href="#" class="button alt">Alternate</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button special big">Big</a></li>
+										<li><a href="#" class="button">Default</a></li>
+										<li><a href="#" class="button alt small">Small</a></li>
+									</ul>
+									<ul class="actions fit">
+										<li><a href="#" class="button special fit">Fit</a></li>
+										<li><a href="#" class="button fit">Fit</a></li>
+										<li><a href="#" class="button alt fit">Fit</a></li>
+									</ul>
+									<ul class="actions fit small">
+										<li><a href="#" class="button special fit small">Fit + Small</a></li>
+										<li><a href="#" class="button fit small">Fit + Small</a></li>
+										<li><a href="#" class="button alt fit small">Fit + Small</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button special icon fa-download">Icon</a></li>
+										<li><a href="#" class="button icon fa-download">Icon</a></li>
+										<li><a href="#" class="button alt icon fa-check">Icon</a></li>
+									</ul>
+									<ul class="actions">
+										<li><span class="button special disabled">Special</span></li>
+										<li><span class="button disabled">Default</span></li>
+										<li><span class="button alt disabled">Alternate</span></li>
+									</ul>
+								</section>
+
+								<section>
+									<h4>Form</h4>
+									<form method="post" action="#">
+										<div class="row uniform half ollapse-at-2">
+											<div class="6u">
+												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+											</div>
+											<div class="6u">
+												<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+											</div>
+										</div>
+										<div class="row uniform half">
+											<div class="12u">
+												<div class="select-wrapper">
+													<select name="demo-category" id="demo-category">
+														<option value="">- Category -</option>
+														<option value="1">Manufacturing</option>
+														<option value="1">Shipping</option>
+														<option value="1">Administration</option>
+														<option value="1">Human Resources</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="row uniform half collapse-at-2">
+											<div class="4u">
+												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+												<label for="demo-priority-low">Low Priority</label>
+											</div>
+											<div class="4u">
+												<input type="radio" id="demo-priority-normal" name="demo-priority">
+												<label for="demo-priority-normal">Normal Priority</label>
+											</div>
+											<div class="4u">
+												<input type="radio" id="demo-priority-high" name="demo-priority">
+												<label for="demo-priority-high">High Priority</label>
+											</div>
+										</div>
+										<div class="row uniform half">
+											<div class="6u">
+												<input type="checkbox" id="demo-copy" name="demo-copy">
+												<label for="demo-copy">Email me a copy of this message</label>
+											</div>
+											<div class="6u">
+												<input type="checkbox" id="demo-human" name="demo-human" checked>
+												<label for="demo-human">I am a human and not a robot</label>
+											</div>
+										</div>
+										<div class="row uniform half">
+											<div class="12u">
+												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+											</div>
+										</div>
+										<div class="row uniform">
+											<div class="12u">
+												<ul class="actions">
+													<li><input type="submit" value="Send Message" /></li>
+													<li><input type="reset" value="Reset" class="alt" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</section>
+
+								<section>
+									<h4>Image</h4>
+									<h5>Fit</h5>
+									<span class="image fit"><img src="images/banner.jpg" alt="" /></span>
+									<div class="box alt">
+										<div class="row no-collapse half uniform">
+											<div class="4u"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+											<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+											<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+										</div>
+										<div class="row no-collapse half uniform">
+											<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+											<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+											<div class="4u"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+										</div>
+										<div class="row no-collapse half uniform">
+											<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+											<div class="4u"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+											<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+										</div>
+									</div>
+									<h5>Left &amp; Right</h5>
+									<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+									<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+								</section>
+
+							</div>
+						</section>
+					-->
+				
+				</div>
+
+			<!-- Footer -->
+				<section id="footer">
+					<div class="container">
+						<ul class="copyright">
+							<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+			
+		</div>
+	</body>
+</html>
