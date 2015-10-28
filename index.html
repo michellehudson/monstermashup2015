@@ -63,7 +63,7 @@
 					<section id="intro" class="one">
 						<div class="container">
 
-							<a href="misfits horror business link?" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                            <a href="" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
 
 
 							<header>
@@ -100,14 +100,9 @@
 								<h2>Get your data.</h2>
 							</header>
 							
-								<p style="text-align:left">In my case, I'm using data supplied by Yale University Library about their VHS collection of horror and exploitation films.</p>
-							
-							<p style="text-align:left">Saving the Scream Queens: Why Yale University Library decided to preserve nearly 3,000 horror & exploitation movies on VHS, David Gary: http://www.theatlantic.com/entertainment/archive/2015/08/saving-the-scream-queens/401141/ 
-
-Zombies, Maniacs, and Monsters: VHS Horror Movie Night (Bass Library): http://schedule.yale.edu/event.php?id=1041814 
-</p>
-							
-							<p style="text-align:left">More text.</p>
+								<p style="text-align:left">In my case, I'm using data supplied by Yale University Library about their VHS collection of horror and exploitation films. This data takes the form of a spreadsheet of titles and some other metadata about the objects.</p>
+				
+							<p style="text-align:left">To read more about Yale's VHS collection and its significance, check out <a href="http://www.theatlantic.com/entertainment/archive/2015/08/saving-the-scream-queens/401141/"><i>Saving the Scream Queens: Why Yale University Library decided to preserve nearly 3,000 horror & exploitation movies on VHS</i></a> in <i>The Atlantic</i>.</p>
 							
 						</div>
 					</section>
@@ -117,14 +112,18 @@ Zombies, Maniacs, and Monsters: VHS Horror Movie Night (Bass Library): http://sc
 						<div class="container">
 					
 							<header>
-								<h2>Import your Excel file into OpenRefine</h2>
+								<h2>Create a Project in OpenRefine</h2>
 							</header>
 							
-							<p style="text-align:left">Words about this</p> 
-							
-			
-						
+							<p style="text-align:left">Import the first file, the original data.</p> 
+                            
+                            <a href="images/screen01.png" class="image featured"><img src="images/screen01.png"></a>
+                            
+                            <p style="text-align:left">Parse the files the way you want them: which worksheets do you want to import? Are column headers actual headers?</p> 
+                            
+                          <a href="images/screen02.png" class="image featured">   <img src="images/screen02.png"></a>
 
+                            
 						</div>
 					</section>
 			
@@ -137,12 +136,31 @@ Zombies, Maniacs, and Monsters: VHS Horror Movie Night (Bass Library): http://sc
 							</header>
 							
 							<p style="text-align:left">This data set needs to be cleaned up a little to get the most out of the following steps.</p>
+                            
+                            	<p style="text-align:left">You can hide rows you don't want to concentrate on without deleting them entirely.</p>
 							
-							<p style="text-align:left">Split the titles, some of them have unwanted information in parenthesis. Delete the unwanted things.</p>	
+                            <a href="images/screen03.png" class="image featured">   <img src="images/screen03.png"></a>
+                            
+                            <p style="text-align:left"><b>Split the TITLE column</b>: some of them have addditional information within parenthesis that we don't want. TITLE column down arrow --> edit column --> split into several columns.</p>	
 							
-							<p style="text-align:left">Now is also a good time to check for duplicates. In this case, we don't have any -- we just have two copies of a few items. That's fine.</p>	
+                            							
+                            <a href="images/screen04.png" class="image featured">   <img src="images/screen04.png"></a>
+                            
+                            <p style="text-align:left">The way to split a column is: TITLE column down arrow --> edit column --> split into several columns.</p>	
 							
-						
+                            <a href="images/screen05.png" class="image featured">   <img src="images/screen05.png"></a>
+                            
+                              <p style="text-align:left">In the dialog box that follows, note that you can choose the separator (in our case, "("), how many columns at most, and whether to remove the original column.</p>	
+							<a href="images/screen06.png" class="image featured">   <img src="images/screen06.png"></a>
+                            
+                             <p style="text-align:left">This is what it will look like when it's finished. We can delete unwanted columns after this.</p>	
+                            
+                            <a href="images/screen07.png" class="image featured">   <img src="images/screen07.png"></a>
+                            
+							<p style="text-align:left">Now is also a good time to check for duplicates by choosing TITLE 1 down arrow --> Facet --> Customized facets --> Duplicates facet. In this case, we don't have any -- we just have two copies of a few items. That's fine.</p>	
+							        
+                            <a href="images/screen08.png" class="image featured">   <img src="images/screen08.png"></a>
+						   <a href="images/screen09.png" class="image featured">   <img src="images/screen09.png"></a>
 
 						</div>
 					</section>
@@ -153,13 +171,43 @@ Zombies, Maniacs, and Monsters: VHS Horror Movie Night (Bass Library): http://sc
 						<div class="container">
 
 							<header>
-								<h2>Reconcile with Freebase</h2>
+								<h2>Reconcile</h2>
 							</header>
 
-							
-							<p style="text-align:left">This section is long -- add all the steps. Also it takes a long time, so get coffee.</p>
-								
+                            
+                            
+								<h3>Reconciliation Resources</h3>
+						
 
+							
+							<p style="text-align:left">This example is horror film metadata, but you can reconcile against several data sources that may be more relevant to your projects: <a href="https://github.com/OpenRefine/OpenRefine/wiki/Reconcilable-Data-Sources">https://github.com/OpenRefine/OpenRefine/wiki/Reconcilable-Data-Sources</a></p>
+								
+                          
+								<h3>Reconcile with Freebase</h3>
+							
+                            <p style="text-align:left">Reconciling the data against FreeBase will allow us to pull additional information in later. To do this, use the <a href="https://github.com/OpenRefine/OpenRefine/wiki/Reconciliation">new freebase reconciliation service described by the OpenRefine wiki</a>.</p>
+                            
+                            <p style="text-align:left">To reconcile my titles, I'm going to choose Title 1 --> Reconcile --> Start reconciling...</p>
+                            
+                            <a href="images/screen10.png" class="image featured">   <img src="images/screen10.png"></a>
+                            
+                             <p style="text-align:left">In these options, I'm going to choose "Add Standard Service..." and use the URL <i>http://reconcile.freebaseapps.com/reconcile</i> as advised by the OpenRefine wiki.</p>
+                            
+                            <a href="images/screen11.png" class="image featured">   <img src="images/screen11.png"></a>
+                            
+                              <p style="text-align:left">You can see it lets me choose a type of entry to reconcile to. We'e only dealing with film titles, so that's easy.</p>
+                            
+                             <a href="images/screen12.png" class="image featured">   <img src="images/screen12.png"></a>
+                            
+                          <p style="text-align:left">Start the reconciliaton. This will take a long time. Go get a coffee.</p>
+                            
+      								<h3>Matching the entries</h3>
+                      
+                             <p style="text-align:left">See how it estimates the match of what our cell says with what exists on Freebase? They mostly look correct and this is just a demo, so we'll auto-match everything. Title 1 --> Reconcile --> Actions --> Match each cell to its best candidate.</p>
+                            
+                            <a href="images/screen13.png" class="image featured">   <img src="images/screen13.png"></a>
+                            
+                            
 						</div>
 					</section>
 					
@@ -172,9 +220,28 @@ Zombies, Maniacs, and Monsters: VHS Horror Movie Night (Bass Library): http://sc
 							</header>
 
 							
-							<p style="text-align:left">Now that things are reconciled, add more columns from Freebase. Dates & directors.</p>
-								
+							<p style="text-align:left">Let's add release dates and directors for the TITLE column that has been reconciled with Freebase. Since Freebase now recognizes our titles as a piece of metadata that exists in their system, we can pull from it the directors and release dates for those films that it recognizes. </p>
+								<header>
+								<h3>Add directors</h3>
+							</header>
 
+                            <p style="text-align:left">TITLE 1 --> Edit column --> Add columns from Freebase... and then add a property -- just searching for "director" will pop up a list of suggestions, and we can choose the correct one: "directed by" in /film/film/directed_by"</p>
+                            
+                            <a href="images/screen14.png" class="image featured">   <img src="images/screen14.png"></a>
+                            
+                            <a href="images/screen15.png" class="image featured">   <img src="images/screen15.png"></a>
+                            
+                            <header>
+								<h3>Add release dates</h3>
+							</header>
+                            
+                            <p style="text-align:left">TITLE 1 --> Edit column --> Add columns from Freebase... and then add a property -- searching for dates will get you to the one we want -- "initial release date."</p>
+                            <a href="images/screen16.png" class="image featured">   <img src="images/screen16.png"></a>
+                            
+                           <p style="text-align:left">This adds the full date. If you want to split the column so you have a column of just release years, do it the same as before!</p>
+                        
+                              <a href="images/screen17.png" class="image featured">   <img src="images/screen17.png"></a>
+                            
 						</div>
 					</section>
 					
@@ -186,12 +253,15 @@ Zombies, Maniacs, and Monsters: VHS Horror Movie Night (Bass Library): http://sc
 						<div class="container">
 
 							<header>
-								<h2>Export back to Excel</h2>
+								<h2>Export!</h2>
 							</header>
 
 						
-							<p style="text-align:left">Export to excel to work on visualizing -- by director, by year, etc.</p>
+							<p style="text-align:left">Export as a project, as a spreadsheet, as anything you like for further analysis.</p>
 
+                            
+                            <a href="images/screen18.png" class="image featured">   <img src="images/screen18.png"></a>
+                            
 						</div>
 					</section>
 					
@@ -204,8 +274,7 @@ Zombies, Maniacs, and Monsters: VHS Horror Movie Night (Bass Library): http://sc
 								<h2>Congratulations, and Happy Halloween!</h2>
 							</header>
 
-							
-							<p>Candy apples for everybody.</p>
+							<a href="https://play.spotify.com/track/5h5reMGNpL19vdn5wMkbNn" class="image featured" target="_blank">   <img src="images/halloween.jpg"></a>
 
 						</div>
 					</section>
